@@ -291,12 +291,95 @@ function SocialProof() {
   return (
     <section id="results" className="raised">
       <div className="wrap">
-        <div className="section-tag">Early results</div>
-        <h2>Campaigns are already running.</h2>
-        <p className="section-sub">TaskGrind has run multiple campaigns since launch. Detailed results are shared with prospective customers directly.</p>
-        <div className="proof-grid">
-          <div className="proof-card placeholder-card">
-            <span className="mono placeholder-tag">CASE STUDY</span>
-            <p>Add a real campaign outcome here once you have one to publish.</p>
-          </div>
-          <div className="proof-card placeholder-card">
+        <div className="section-tag">Where things stand</div>
+        <h2>Early, real, and still growing.</h2>
+        <p className="section-sub">
+          TaskGrind has run engagement and growth campaigns since launch. It's early — case studies
+          and customer quotes will go here once there's a campaign worth featuring in detail.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+function FAQ() {
+  const items = [
+    { q: 'Who is TaskGrind for?', a: 'Founders and teams who need real users for beta testing, feedback, or growth campaigns and want to control who gets in.' },
+    { q: 'What type of users can I recruit?', a: 'Whoever fits your requirements — you define who you\u2019re looking for when you set up the campaign.' },
+    { q: 'How does screening work?', a: 'Applicants apply into a pool. You review answers and any media they submit, then approve or reject — or set rules to screen automatically.' },
+    { q: 'Can I choose my own requirements?', a: 'Yes. You define the questions, the criteria, and whether screening is manual or automatic.' },
+    { q: 'How does feedback collection work?', a: 'Attach a form to your campaign to collect structured responses from approved users once they complete it.' },
+    { q: 'How much does it cost?', a: 'Get in touch to talk through pricing for your campaign.' },
+    { q: 'How quickly can I launch a campaign?', a: 'Most campaigns can be set up and opened for applicants the same day.' },
+  ]
+  const [openIdx, setOpenIdx] = useState(null)
+  return (
+    <section id="faq">
+      <div className="wrap">
+        <div className="section-tag">FAQ</div>
+        <h2>Questions founders ask first.</h2>
+        <div className="faq-list">
+          {items.map((it, i) => (
+            <div className={`faq-item ${openIdx === i ? 'is-open' : ''}`} key={it.q}>
+              <button className="faq-q" onClick={() => setOpenIdx(openIdx === i ? null : i)} aria-expanded={openIdx === i}>
+                <span>{it.q}</span>
+                <span className="faq-icon" aria-hidden="true">{openIdx === i ? '−' : '+'}</span>
+              </button>
+              {openIdx === i && <p className="faq-a">{it.a}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function FinalCTA() {
+  return (
+    <section id="create-campaign" className="cta-banner">
+      <div className="wrap">
+        <div className="section-tag" style={{ margin: '0 auto 14px' }}>Get started</div>
+        <h2 style={{ margin: '0 auto 16px' }}>Have a campaign to run?</h2>
+        <p className="section-sub" style={{ margin: '0 auto 40px' }}>Get the users you actually need — not just the ones who showed up first.</p>
+        <div className="cta-row">
+          <a href="https://t.me/TaskGrindBot" className="btn btn-green">Create Your Campaign</a>
+          <a href="#how-it-works" className="btn btn-ghost">Revisit how it works</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Footer() {
+  return (
+    <footer>
+      <div className="wrap foot-inner">
+        <div className="foot-left">TaskGrind — real users, screened in.</div>
+        <div className="foot-links">
+          <a href="https://t.me/TaskGrindBot">Bot</a>
+          <a href="https://t.me/+EEDVwNc2s345OGVk">Community</a>
+          <a href="https://t.me/Skiiddd">Support</a>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+export default function App() {
+  return (
+    <>
+      <Nav />
+      <Hero />
+      <TrustBar />
+      <Problem />
+      <HowItWorks />
+      <Screening />
+      <CampaignTypes />
+      <Walkthrough />
+      <SocialProof />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
+    </>
+  )
+}
