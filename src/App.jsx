@@ -342,7 +342,7 @@ function FinalCTA() {
         <h2 style={{ margin: '0 auto 16px' }}>Have a campaign to run?</h2>
         <p className="section-sub" style={{ margin: '0 auto 40px' }}>Get the users you actually need — not just the ones who showed up first.</p>
         <div className="cta-row">
-          <a href="https://t.me/@timmeybchain" className="btn btn-green">Create Your Campaign</a>
+          <a href="https://t.me/timmeybchain" className="btn btn-green">Create Your Campaign</a>
           <a href="#how-it-works" className="btn btn-ghost">Revisit how it works</a>
         </div>
       </div>
