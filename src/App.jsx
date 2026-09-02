@@ -291,8 +291,7 @@ function SocialProof() {
       <div className="wrap">
         <h2>Early, real, and still growing.</h2>
         <p className="proof-note">
-          TaskGrind has run engagement and growth campaigns since launch. It is early.
-          Case studies and customer quotes will go here once there is a campaign worth featuring in detail.
+          
         </p>
       </div>
     </section>
