@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-const STATS_URL = 'https://tgd-web-base.vercel.app/api/stats'
+const STATS_URL = 'https://app.taskgrind.app/api/stats'
 
 /* Signature element: a grid of applicant dots that resolves from
    "50 applied" down to "10 approved" -- the literal shape of screening. */
@@ -126,12 +126,12 @@ function StatsStrip() {
           <span className="stat-label">real testers signed up</span>
         </div>
         <div className="stat">
-          <span className="stat-num">2 min</span>
-          <span className="stat-label">for a new campaign to go live</span>
+          <span className="stat-num">Seconds</span>
+          <span className="stat-label">from payment to your campaign going live</span>
         </div>
         <div className="stat">
           <span className="stat-num">100%</span>
-          <span className="stat-label">of submissions reviewed by a human</span>
+          <span className="stat-label">of submissions reviewed before anyone gets paid</span>
         </div>
       </div>
     </section>
@@ -212,6 +212,10 @@ function Screening() {
             <li><strong>Manual screening.</strong> Read every answer yourself and approve one by one.</li>
             <li><strong>Applicant answers.</strong> Ask the questions that actually tell you if someone fits.</li>
             <li><strong>Media submissions.</strong> Request a screenshot, recording, or photo as proof before approval.</li>
+            <li><strong>Multi-day tracking.</strong> Run beta tests over several days with daily check-ins, and see progress as it comes in.</li>
+            <li><strong>Chat with a tester directly.</strong> If a submission is unclear, ask for more detail right from your dashboard — no need to accept or reject blind. Neither of you ever sees the other's contact info.</li>
+            <li><strong>Email alerts.</strong> Know the moment someone applies or submits proof, instead of refreshing your dashboard to check.</li>
+            <li><strong>Review it yourself, or hand it off.</strong> Approve submissions yourself, or let TaskGrind's team review on your behalf if you would rather stay hands-off.</li>
             <li><strong>Approve only who you want.</strong> Reject the rest. There is no obligation to take everyone who applies.</li>
           </ul>
         </div>
@@ -226,10 +230,11 @@ function Screening() {
 
 function CampaignTypes() {
   const types = [
-    { t: 'Beta testing', d: 'Get real first time users on your product before a wider launch, with structured feedback attached.' },
-    { t: 'User acquisition', d: 'Recruit genuine sign ups and installs from people who complete the full flow.' },
-    { t: 'Feedback collection', d: 'Route screened respondents straight into a form built for the answers you actually need.' },
-    { t: 'Engagement', d: 'Grow follows, joins, and reviews from real accounts, verified with proof.' },
+    { t: 'Testing', d: 'Real product testing with a screening survey first, including multi-day beta tests with daily check-ins.' },
+    { t: 'Engagement', d: 'Likes, comments, reposts, follows — from real, screened accounts.' },
+    { t: 'Upvote', d: 'Get real people to check out your Product Hunt, Reddit, or Hacker News listing and react genuinely.' },
+    { t: 'Reviews', d: 'Real users try your product first, then leave honest, first-hand reviews on your listing.' },
+    { t: 'Survey', d: 'Screen respondents before they ever reach your survey, so the answers actually come from your target user.' },
   ]
   return (
     <section id="campaign-types">
@@ -285,19 +290,6 @@ function Walkthrough() {
   )
 }
 
-function SocialProof() {
-  return (
-    <section id="results">
-      <div className="wrap">
-        <h2>Early, real, and still growing.</h2>
-        <p className="proof-note">
-          
-        </p>
-      </div>
-    </section>
-  )
-}
-
 function FAQ() {
   const items = [
     { q: 'Who is TaskGrind for?', a: 'Founders and teams who need real users for beta testing, feedback, or growth campaigns and want to control who gets in.' },
@@ -305,8 +297,10 @@ function FAQ() {
     { q: 'How does screening work?', a: 'Applicants apply into a pool. You review answers and any media they submit, then approve or reject, or set rules to screen automatically.' },
     { q: 'Can I choose my own requirements?', a: 'Yes. You define the questions, the criteria, and whether screening is manual or automatic.' },
     { q: 'How does feedback collection work?', a: 'Attach a form to your campaign to collect structured responses from approved users once they complete it.' },
+    { q: 'Can I run a multi-day test instead of a one-off task?', a: 'Yes. Testing campaigns support multi-day beta tests with daily check-ins, so you get ongoing signal instead of a single snapshot.' },
+    { q: 'How do testers actually get paid, and is it legit?', a: 'Payouts go straight to a verified bank account — we confirm the real account holder before anything is ever saved, so testers cannot get paid to a fake or mistyped account.' },
     { q: 'How much does it cost?', a: 'Get in touch to talk through pricing for your campaign.' },
-    { q: 'How quickly can I launch a campaign?', a: 'Most campaigns can be set up and opened for applicants the same day.' },
+    { q: 'How quickly can I launch a campaign?', a: 'Campaigns go live within seconds of payment and are immediately visible to testers.' },
   ]
   const [openIdx, setOpenIdx] = useState(null)
   return (
@@ -370,7 +364,6 @@ export default function App() {
       <Screening />
       <CampaignTypes />
       <Walkthrough />
-      <SocialProof />
       <FAQ />
       <FinalCTA />
       <Footer />
