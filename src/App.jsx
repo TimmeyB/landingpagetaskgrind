@@ -347,6 +347,9 @@ function Footer() {
           <a href="https://t.me/TaskGrindBot">Bot</a>
           <a href="https://t.me/+EEDVwNc2s345OGVk">Community</a>
           <a href="https://t.me/Skiiddd">Support</a>
+          <a href="https://nicklaunches.com/products/taskgrind/?utm_source=taskgrind.app&utm_medium=badge&utm_campaign=featured" target="_blank" rel="noopener">
+            <img src="https://nicklaunches.com/badges/featured-dark.png" alt="TaskGrind on Nick Launches" width="244" height="56" />
+          </a>
         </div>
       </div>
     </footer>
@@ -369,4 +372,4 @@ export default function App() {
       <Footer />
     </>
   )
-}
+       }
