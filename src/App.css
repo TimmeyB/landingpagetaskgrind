@@ -42,12 +42,14 @@ nav { position: sticky; top: 0; z-index: 50; padding: 18px 0; border-bottom: 1px
 .nav-links a:hover { color: var(--text); }
 .nav-links a:focus-visible, .btn:focus-visible { outline: 2px solid var(--moss); outline-offset: 3px; border-radius: 4px; }
 .nav-cta { flex-shrink: 0; }
+.nav-login { flex-shrink: 0; font-size: 0.9rem; color: var(--text-dim); transition: color 0.2s; }
+.nav-login:hover { color: var(--text); }
 .nav-burger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 10px; }
 .nav-burger span { width: 20px; height: 2px; background: var(--text); display: block; }
 .nav-mobile { display: none; }
 
 @media (max-width: 860px) {
-  .nav-links, .nav-cta { display: none; }
+  .nav-links, .nav-cta, .nav-login { display: none; }
   .nav-burger { display: flex; }
   .nav-mobile.wrap { display: flex; flex-direction: column; gap: 18px; padding: 22px 24px 26px; border-top: 1px solid var(--line); }
   .nav-mobile a { font-size: 1rem; color: var(--text-dim); padding: 4px 0; }
