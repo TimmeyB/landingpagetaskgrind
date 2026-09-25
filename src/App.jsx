@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 const STATS_URL = 'https://app.taskgrind.app/api/stats'
+const SESSION_URL = 'https://app.taskgrind.app/api/auth/session'
 
 /* Signature element: a grid of applicant dots that resolves from
    "50 applied" down to "10 approved" -- the literal shape of screening. */
@@ -58,6 +59,7 @@ function Nav() {
           <a href="#faq">FAQ</a>
         </div>
         <a href="#create-campaign" className="btn btn-moss nav-cta">Create a campaign</a>
+        <a href="https://app.taskgrind.app/login" className="nav-login">Log in</a>
         <button className="nav-burger" aria-label="Toggle menu" onClick={() => setOpen(!open)}>
           <span /><span /><span />
         </button>
@@ -69,6 +71,7 @@ function Nav() {
           <a href="#campaign-types" onClick={() => setOpen(false)}>Campaign types</a>
           <a href="#faq" onClick={() => setOpen(false)}>FAQ</a>
           <a href="#create-campaign" className="btn btn-moss" onClick={() => setOpen(false)}>Create a campaign</a>
+          <a href="https://app.taskgrind.app/login" onClick={() => setOpen(false)}>Log in</a>
         </div>
       )}
     </nav>
@@ -357,6 +360,20 @@ function Footer() {
 }
 
 export default function App() {
+  // If the visitor already has a live session on app.taskgrind.app, skip
+  // the marketing page and send them straight to their dashboard instead.
+  // credentials: 'include' is required for the httpOnly session cookie to
+  // even be sent cross-origin — see app/api/auth/session/route.js on the
+  // web app for the CORS side of this.
+  useEffect(() => {
+    fetch(SESSION_URL, { credentials: 'include' })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.authenticated) window.location.href = 'https://app.taskgrind.app/dashboard'
+      })
+      .catch(() => {}) // fine to no-op — worst case, an already-logged-in visitor just sees the marketing page
+  }, [])
+
   return (
     <>
       <Nav />
@@ -372,4 +389,4 @@ export default function App() {
       <Footer />
     </>
   )
-       }
+               }
