@@ -1,4 +1,4 @@
-# TaskGrind Landing Page
+# TaskGrind Landing Pages
 
 Vite + React rebuild of the TaskGrind landing page, reframed around the campaign/screening product
 (create campaign → define requirements → open pool → screen applicants → approve → run + collect feedback).
